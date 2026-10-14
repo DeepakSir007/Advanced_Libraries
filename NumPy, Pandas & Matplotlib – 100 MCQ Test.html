@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NumPy, Pandas & Matplotlib – 100 MCQ Test</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f5f7fb;--card:#fff;--tx:#14213d;--mu:#5b6478;--bd:#d9dfec;--ac:#1d4ed8;--ok:#15803d;--okb:#dcfce7;--bad:#b91c1c;--badb:#fee2e2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#1a2133;--tx:#e8ecf5;--mu:#9aa5bd;--bd:#2c3650;--ac:#6b9bff;--ok:#6ee7a0;--okb:#12341f;--bad:#fca5a5;--badb:#3b1818}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#1a2133;--tx:#e8ecf5;--mu:#9aa5bd;--bd:#2c3650;--ac:#6b9bff;--ok:#6ee7a0;--okb:#12341f;--bad:#fca5a5;--badb:#3b1818}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.w{max-width:780px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:8px 0}h2{font-size:1.15rem;margin:18px 0 6px;color:var(--ac)}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:12px 0}
+.mu{color:var(--mu)}
+input[type=text]{font:inherit;padding:8px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);width:100%;max-width:320px;box-sizing:border-box}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--ac);background:var(--ac);color:#fff;padding:8px 18px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0;display:flex;justify-content:space-between;align-items:center;z-index:2;border-bottom:1px solid var(--bd)}
+.q h3{font-size:1rem;margin:0 0 8px}
+.o{display:block;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;margin:6px 0;cursor:pointer}
+.o:has(input:checked){border-color:var(--ac);background:var(--bg)}
+.o input{margin-right:8px}
+.o.ok{background:var(--okb);border-color:var(--ok);color:var(--ok);font-weight:600}
+.o.no{background:var(--badb);border-color:var(--bad);color:var(--bad)}
+.big{font-size:2.6rem;font-weight:700;margin:0}
+table{width:100%;border-collapse:collapse}td,th{padding:6px;border-bottom:1px solid var(--bd);text-align:left}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-weight:600}
+.warn{color:var(--bad);margin-left:10px}
+.hide{display:none}
+</style></head><body><div class="w">
+<div id="start" class="c">
+<h1>Python for Data Science – 100 MCQ Test</h1>
+<p class="mu">NumPy (40) · Pandas (37) · Matplotlib (23). Each question carries 1 mark; there is no negative marking. Pass mark: 40%.</p>
+<p><input type="text" id="nm" placeholder="Enter your name"></p>
+<button id="go">Start Test</button><span id="nw" class="warn"></span>
+</div>
+<div id="test" class="hide">
+<div class="bar"><strong id="who"></strong><span id="prog">Answered 0 / 100</span></div>
+<div id="L"></div>
+<div class="c"><button id="sub">Submit Test</button><span id="sw" class="warn"></span></div>
+</div>
+<div id="res" class="hide"></div>
+</div>
+<script>
+// [question, correct, wrong1, wrong2, wrong3]  — 1-40 NumPy, 41-77 Pandas, 78-100 Matplotlib
+const D=[
+["NumPy stands for:","Numerical Python","Number Package","Numeric Pandas","New Python"],
+["The standard way to import NumPy is:","import numpy as np","import np as numpy","from numpy import pd","include numpy"],
+["A NumPy array can hold:","Homogeneous data (one data type)","Mixed types freely","Only strings","Only functions"],
+["np.array([1, 2.0, 3, 4]) upcasts the integers to:","float","str","bool","complex only"],
+["np.array([1,2,3], dtype=str) creates elements of type:","String","Integer","Float","Boolean"],
+["The shape of np.zeros((2,3)) is:","(2, 3)","(3, 2)","(6,)","(2,)"],
+["np.ones(5, dtype=int) gives:","[1 1 1 1 1]","[1. 1. 1. 1. 1.]","[0 0 0 0 0]","[5]"],
+["np.random.rand(3,4) generates:","A 3×4 array of random floats between 0 and 1","A 4×3 array of integers","A 3×4 array of zeros","12 random integers"],
+["For a = np.array([[1,2,3,4],[5,6,7,8]]), a.shape is:","(2, 4)","(4, 2)","(8,)","(2, 2)"],
+["For the same array, a.size is:","8","2","4","6"],
+["np.round(12.34457542, decimals=3) returns:","12.345","12.344","12.34","12.3"],
+["In reshape, the value -1 means:","NumPy infers that dimension automatically","Reverse the array","Delete that axis","Raise an error"],
+["np.arange(12).reshape(3,4) produces an array of shape:","(3, 4)","(4, 3)","(12, 1)","(1, 12)"],
+["Difference between flatten() and ravel():","flatten returns a copy, ravel returns a view","flatten returns a view, ravel returns a copy","Both return views","They are identical in every way"],
+["np.copy(a) creates a:","Deep copy","Shallow copy","Reference only","View"],
+["If c = a (a is a list) and c[0] = 100, then:","a[0] also becomes 100","a is unchanged","a is deleted","An error occurs"],
+["Transposing a 2×3 array gives shape:","(3, 2)","(2, 3)","(6, 1)","(1, 6)"],
+["np.expand_dims is used to:","Add a new axis (dimension)","Remove an axis","Flatten the array","Sort the array"],
+["np.squeeze on an array of shape (1,2,3) gives shape:","(2, 3)","(1, 6)","(3, 2)","(1, 2, 3)"],
+["For a = np.array([21,32,43,54,65,76]), a[1:4] is:","[32 43 54]","[21 32 43 54]","[32 43]","[43 54 65]"],
+["For a = np.array([1,2,3,4,5,6]), a[1:6:2] is:","[2 4 6]","[1 3 5]","[2 3 4 5 6]","[1 2 3]"],
+["a[::-1] on a 1-D array:","Reverses the array","Sorts it descending","Returns the last element","Removes the first element"],
+["For a = np.array([1,2,3,4,5,6]), a[:6:3] is:","[1 4]","[1 3 5]","[3 6]","[1 2 3]"],
+["For a = np.array([[1,2,3],[4,5,6]]), a[1,2] is:","6","3","5","4"],
+["For the same 2-D array, a[:,1] is:","[2 5]","[4 5 6]","[1 2 3]","[5 6]"],
+["np.flip() is used to:","Reverse the order of elements","Transpose the array","Add elements","Find the maximum"],
+["np.vstack((np.array([1,2]), np.array([3,4]))) gives an array of shape:","(2, 2)","(4,)","(1, 4)","(2,)"],
+["np.hstack joins arrays:","Horizontally (column-wise)","Vertically only","Diagonally","Randomly"],
+["np.append(np.array([1,2]), 5) returns:","[1 2 5]","[5 1 2]","[6 7]","[1 2]"],
+["Broadcasting in NumPy allows:","Operations on arrays of different shapes","Only same-shape operations","Printing arrays","Saving arrays to disk"],
+["np.ones((3,3), dtype=int) + np.array([2]) gives:","A 3×3 array where every element is 3","A 3×3 array of 2s","A 3×3 array of 1s","An error"],
+["For a = np.array([1,2,3,4,5,6]), a*5 is:","[ 5 10 15 20 25 30]","[6 7 8 9 10 11]","[1 2 3 4 5 6]","[5]"],
+["np.mean(np.arange(5,18,2)) is:","11.0","10.0","12.0","13.0"],
+["np.median(np.array([1,3,5,7,9])) is:","5.0","3.0","7.0","25.0"],
+["For an array u, the expression u > 5 returns:","A boolean array","The elements greater than 5","A single True/False","The count of such elements"],
+["u[u > 5] returns:","A 1-D array of elements greater than 5","A boolean array","The indices of those elements","The sum of those elements"],
+["In NumPy, axis=0 means the operation runs:","Down the rows for each column (column-wise)","Across each row","On the whole array flattened","On the diagonal"],
+["In NumPy, axis=1 means the operation runs:","Across the columns for each row (row-wise)","Down each column","Only on the first row","On scalars only"],
+["np.argmax() returns:","The index of the maximum value","The maximum value","The minimum value","The mean"],
+["np.sqrt(np.array([4,9,16])) returns:","[2. 3. 4.]","[16 81 256]","[2 3 4 5]","[4 9 16]"],
+["Pandas is mainly used for:","Data manipulation and analysis","Drawing 3-D games","Operating-system tasks","Compiling code"],
+["A Pandas Series is:","A one-dimensional labelled array","A two-dimensional table","A 3-D array","A plotting function"],
+["A Pandas DataFrame is:","A two-dimensional table of rows and columns","A single list","A 1-D array only","A plot type"],
+["The standard import for Pandas is:","import pandas as pd","import pandas as np","import pd as pandas","from pandas import np"],
+["For s = pd.Series([11,23,34], index=['a','b','c']), s['b'] is:","23","11","34","'b'"],
+["Which function reads a CSV file?","pd.read_csv()","pd.open_csv()","pd.load_text()","pd.csv_read()"],
+["By default, df.head() shows:","The first 5 rows","The first 10 rows","The last 5 rows","All rows"],
+["df.tail(2) shows:","The last 2 rows","The first 2 rows","Two random rows","Two columns"],
+["To read a tab-separated file with read_csv, use:","sep=\"\\t\"","sep=\",\"","sep=\" \"","sep=\"tab\""],
+["df[[\"maths\",\"name\"]] returns:","A DataFrame with those two columns","A Series","A single value","Two separate DataFrames"],
+["df.shape returns:","A tuple (rows, columns)","Only the number of rows","The column names","The data types"],
+["df.shape[0] gives:","The number of rows","The number of columns","The total cells","The index name"],
+["df.info() displays:","Columns, data types and non-null counts","Only the first rows","Only statistics like mean","The shape only"],
+["df.isnull().sum() returns:","The number of null values in each column","Total rows","Column names","The mean of each column"],
+["df.drop(\"QTY\", axis=1) will:","Remove the column named QTY","Remove the row named QTY","Rename QTY","Sort by QTY"],
+["df.describe() provides:","Summary statistics such as count, mean, std, min, max","Only the column names","The first 5 rows","Missing values only"],
+["value_counts() is used to:","Count the frequency of each unique value","Sum all values","Sort the DataFrame","Drop duplicates"],
+["nunique() returns:","The number of unique values","The list of unique values","The total count","The maximum value"],
+["to_csv() is used to:","Save a DataFrame to a CSV file","Read a CSV file","Convert CSV to Excel","Delete a CSV file"],
+["read_csv(\"Data.csv\", header=None) means:","The first row is treated as data, columns are numbered","The file has no data","The first column is dropped","Headers are doubled"],
+["The names=[...] argument in read_csv is used to:","Provide custom column names","Name the file","Rename rows","Name the index only"],
+["np.random.seed(5) is used to:","Get the same random numbers every run","Make numbers more random","Delete random numbers","Sort random numbers"],
+["iloc is:","Integer position-based indexing","Label-based indexing","Condition-based filtering","A plotting function"],
+["loc is:","Label-based indexing","Integer position-based indexing","A sorting method","A file reader"],
+["rdf.iloc[2:4, 1:3] selects:","Rows 2–3 and columns 1–2","Rows 2–4 and columns 1–3","Rows 1–3 and columns 2–4","Rows 3–4 only"],
+["rdf.loc[[\"c\",\"d\"],[\"y\",\"z\"]] selects:","Rows c and d, columns y and z","Rows y and z, columns c and d","Only column c","Position 2 and 3"],
+["rdf[(rdf[\"x\"]>1) & (rdf[\"y\"]<1)] returns rows where:","Both conditions are true","Either condition is true","Neither is true","Only the first is true"],
+["Which operator is used for OR between conditions in Pandas?","|","||","or","+"],
+["set_index(\"x\") will:","Make column x the index","Delete column x","Sort by x","Rename x"],
+["reset_index(drop=True) will:","Reset to the default 0,1,2… index and discard the old index","Keep the old index as a column","Delete all rows","Sort the index"],
+["df1.fillna(value=4) will:","Replace NaN values with 4","Delete NaN rows","Count NaN values","Replace 4 with NaN"],
+["groupby() is used to:","Group rows by a category to apply aggregation","Merge two tables","Sort by index","Drop columns"],
+["pd.concat([df1,df2], axis=0) will:","Stack the DataFrames vertically (row-wise)","Place them side by side","Merge on a key","Delete duplicates"],
+["pd.merge(left, right, how='inner', on='key') returns:","Only rows with matching keys in both","All rows from both","All rows from left only","All rows from right only"],
+["pd.merge(..., how='left') keeps:","All rows from the left DataFrame","Only matching rows","All rows from the right DataFrame","No rows"],
+["df['col2'].apply(lambda x: x*2) does:","Applies the function to every value of the column","Multiplies the whole DataFrame","Drops the column","Sorts the column"],
+["df.sort_values(by=['Population'], ascending=False) sorts:","Population from highest to lowest","Population from lowest to highest","By index","Alphabetically by country"],
+["Matplotlib is a:","2-D plotting library","Database","Machine-learning model","Web framework"],
+["The usual import for Matplotlib's plotting module is:","import matplotlib.pyplot as plt","import matplotlib as pd","import pyplot as matplotlib","import plt"],
+["plt.plot(x, y) draws a:","Line chart","Pie chart","Histogram","Table"],
+["Matplotlib is installed using:","pip install matplotlib","pip get plot","install matplotlib.pyplot","pip run matplotlib"],
+["plt.show() is used to:","Display the figure","Save the figure","Close Python","Clear the data"],
+["plt.xlabel(\"Month\") sets:","The label of the x-axis","The title","The legend","The tick values"],
+["plt.title() sets:","The title of the plot","The x-axis label","The figure size","The colour"],
+["plt.legend() is used to:","Show labels of the plotted series","Draw gridlines","Change axis limits","Save the plot"],
+["Which function draws a scatter plot?","plt.scatter()","plt.dots()","plt.points()","plt.spread()"],
+["A scatter plot shows:","Individual data points and their relationship","Proportions as slices","Frequency bars only","A single line over time"],
+["A pie chart is:","A circular plot divided into slices showing proportions","A line of connected points","A set of bars","A table"],
+["Which function draws a pie chart?","plt.pie()","plt.circle()","plt.slice()","plt.round()"],
+["Which function draws a bar chart?","plt.bar()","plt.column()","plt.block()","plt.stick()"],
+["plt.figure(figsize=(6,6)) sets:","The figure size to 6×6 inches","The font size to 6","The number of plots to 6","The line width to 6"],
+["np.linspace(0,10,10) returns:","10 evenly spaced numbers from 0 to 10","Numbers 0 to 9","10 random numbers","Ten 10s"],
+["plt.xticks() is used to set:","The locations (and labels) of x-axis ticks","The title","The legend position","The figure colour"],
+["A line plot displays:","Data points connected by lines in a series","Only proportions","Only categories as bars","Random shapes"],
+["Which function draws a histogram?","plt.hist()","plt.histo()","plt.bins()","plt.freq()"],
+["plt.savefig(\"a.png\") will:","Save the figure to a file","Show the figure","Delete the figure","Read an image"],
+["In plt.pie(), the autopct argument:","Displays percentage values on the slices","Sets the colours","Rotates the chart","Adds a legend"],
+["plt.grid(True) will:","Display gridlines on the plot","Remove the axes","Add a title","Change the plot type"],
+["plt.subplot() is used to:","Draw multiple plots in one figure","Save a plot","Change data","Install libraries"],
+["plt.ylabel(\"Bill\") sets:","The label of the y-axis","The label of the x-axis","The title","The legend"]
+];
+const sec=i=>i<40?'NumPy':i<77?'Pandas':'Matplotlib';
+let seed=11;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+const Q=D.map(d=>{const o=d.slice(1).map((t,k)=>({t,c:!k}));for(let k=3;k>0;k--){const j=Math.floor(rnd()*(k+1));[o[k],o[j]]=[o[j],o[k]];}return{q:d[0],o,a:-1};});
+const $=id=>document.getElementById(id),ab='ABCD';let name='';
+$('go').onclick=()=>{name=$('nm').value.trim();if(!name){$('nw').textContent='Please enter your name.';return;}
+ $('who').textContent=name;$('start').classList.add('hide');$('test').classList.remove('hide');window.scrollTo(0,0);};
+const L=$('L');
+Q.forEach((x,i)=>{const c=document.createElement('div');c.className='c q';
+ c.innerHTML='<h3></h3>';c.firstChild.textContent=(i+1)+'. '+x.q;
+ x.o.forEach((o,k)=>{const l=document.createElement('label');l.className='o';
+  const r=document.createElement('input');r.type='radio';r.name='q'+i;
+  r.onchange=()=>{x.a=k;$('prog').textContent='Answered '+Q.filter(z=>z.a>=0).length+' / 100';};
+  l.append(r,ab[k]+') '+o.t);c.appendChild(l);});
+ L.appendChild(c);});
+let warned=false;
+$('sub').onclick=()=>{
+ const left=Q.filter(z=>z.a<0).length;
+ if(left&&!warned){warned=true;$('sw').textContent=left+' unanswered. Click Submit again to finish anyway.';return;}
+ finish();};
+function finish(){
+ let s=0;const t={NumPy:[0,0],Pandas:[0,0],Matplotlib:[0,0]};
+ Q.forEach((x,i)=>{const ok=x.a>=0&&x.o[x.a].c;if(ok)s++;t[sec(i)][1]++;if(ok)t[sec(i)][0]++;});
+ const p=s,pass=p>=40;
+ let h='<div class="c"><h1>Result – '+esc(name)+'</h1><p class="big">'+s+' / 100</p>'
+  +'<p><span class="pill" style="background:'+(pass?'var(--okb)':'var(--badb)')+';color:'+(pass?'var(--ok)':'var(--bad)')+'">'+(pass?'PASS':'FAIL')+'</span> &nbsp; '
+  +p+'% · '+grade(p)+'</p><p class="mu">Correct: '+s+' · Wrong: '+Q.filter(z=>z.a>=0&&!z.o[z.a].c).length+' · Unanswered: '+Q.filter(z=>z.a<0).length+'</p></div>';
+ h+='<div class="c"><h2 style="margin-top:0">Topic-wise score</h2><table><tr><th>Topic</th><th>Score</th><th>%</th></tr>';
+ for(const k in t)h+='<tr><td>'+k+'</td><td>'+t[k][0]+' / '+t[k][1]+'</td><td>'+Math.round(t[k][0]/t[k][1]*100)+'%</td></tr>';
+ h+='</table></div><h2>Answer review</h2>';
+ Q.forEach((x,i)=>{h+='<div class="c"><h3 style="font-size:1rem;margin:0 0 8px">'+(i+1)+'. '+esc(x.q)+'</h3>';
+  x.o.forEach((o,k)=>{const cl=o.c?'ok':(k===x.a?'no':'');
+   h+='<div class="o '+cl+'">'+ab[k]+') '+esc(o.t)+(o.c?' ✓':'')+(k===x.a&&!o.c?' ✗ (your answer)':'')+'</div>';});
+  if(x.a<0)h+='<p class="mu" style="margin:6px 0 0">Not answered</p>';h+='</div>';});
+ h+='<div class="c"><button onclick="location.reload()">Retake Test</button></div>';
+ $('test').classList.add('hide');$('res').innerHTML=h;$('res').classList.remove('hide');window.scrollTo(0,0);}
+function grade(p){return p>=90?'Grade A+ (Outstanding)':p>=75?'Grade A (Excellent)':p>=60?'Grade B (Good)':p>=40?'Grade C (Average)':'Grade D (Needs improvement)';}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+</script></body></html>
